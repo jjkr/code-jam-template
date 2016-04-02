@@ -22,10 +22,10 @@ using namespace std;
 
 namespace
 {
-    class Solver
+    class TestCase
     {
     public:
-        Solver(istream& is, ostream& os, ostream& log) : in(is), out(os), log(log) {}
+        TestCase(istream& is, ostream& os, ostream& log) : in(is), out(os), log(log) {}
         void solve();
     private:
         template <typename T>
@@ -44,7 +44,7 @@ namespace
         ostream& log;
     };
 
-    void Solver::solve()
+    void TestCase::solve()
     {
         // MAGIC goes here
 
@@ -66,7 +66,7 @@ void run(istream& in, ostream& out, ostream& log)
     for (auto i = 0; i < num_cases; ++i)
     {
         cout << "Case #" << i + 1 << ": ";
-        Solver(in, out, log).solve();
+        TestCase(in, out, log).solve();
         cout << endl;
     }
 }
