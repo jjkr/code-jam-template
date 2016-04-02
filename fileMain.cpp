@@ -7,6 +7,6 @@ using namespace std;
 int main(int argc, char** argv)
 {
     ifstream inputFile(argv[1]);
-    run(inputFile, cout);
+    run(inputFile, cout, cout);
 }
 

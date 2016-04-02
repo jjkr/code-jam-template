@@ -1,8 +1,10 @@
 #include "run.hpp"
+#include <fstream>
 #include <iostream>
 
 int main()
 {
-    run(std::cin, std::cout);
+    std::fstream fs;
+    run(std::cin, std::cout, fs);
 }
 

@@ -25,7 +25,7 @@ namespace
     class Solver
     {
     public:
-        Solver(istream& is, ostream& os) : in(is), out(os) {}
+        Solver(istream& is, ostream& os, ostream& log) : in(is), out(os), log(log) {}
         void solve();
     private:
         template <typename T>
@@ -41,6 +41,7 @@ namespace
 
         istream& in;
         ostream& out;
+        ostream& log;
     };
 
     void Solver::solve()
@@ -55,17 +56,17 @@ namespace
     }
 }
 
-void run(istream& in, ostream& out)
+void run(istream& in, ostream& out, ostream& log)
 {
-    cout << "running..." << endl;
+    log << "running..." << endl;
     int num_cases;
     in >> num_cases;
-    cout << num_cases << " cases" << endl;
-    cout << fixed << setprecision(7);
+    log << num_cases << " cases" << endl;
+    out << fixed << setprecision(7);
     for (auto i = 0; i < num_cases; ++i)
     {
         cout << "Case #" << i + 1 << ": ";
-        Solver(in, out).solve();
+        Solver(in, out, log).solve();
         cout << endl;
     }
 }
