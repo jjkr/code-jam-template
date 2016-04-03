@@ -30,7 +30,7 @@ public:
         : in(is), out(os), logger(logger)
     {
     }
-    void solve();
+    void run();
 
 private:
     template <typename T>
@@ -48,7 +48,7 @@ private:
     ostream& logger;
 };
 
-void TestCase::solve()
+void TestCase::run()
 {
     // MAGIC goes here
 
@@ -70,7 +70,7 @@ void run(istream& in, ostream& out, ostream& logger)
     for (auto i = 0; i < numCases; ++i)
     {
         out << "Case #" << i + 1 << ": ";
-        TestCase(in, out, logger).solve();
+        TestCase(in, out, logger).run();
         out << endl;
     }
 }
