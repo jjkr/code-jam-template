@@ -54,8 +54,33 @@ void TestCase::run()
 
 
 
+    auto c = rd();
+    auto f = rd();
+    auto x = rd();
 
+    if (c >= x)
+    {
+        cout << x / 2.0;
+        return;
+    }
 
+    auto rate = 2.0;
+
+    auto time = 0.0;
+    while (true)
+    {
+        auto timeNoFarm = x / rate;
+        auto nextFarm = c / rate;
+        rate += f;
+        auto timeWithFarm = nextFarm + x / rate;
+
+        if (timeNoFarm < timeWithFarm)
+        {
+            cout << time + timeNoFarm;
+            return;
+        }
+        time += nextFarm;
+    }
 
 
 }
@@ -71,6 +96,7 @@ void run(istream& in, ostream& out, ostream& logger)
     {
         out << "Case #" << i + 1 << ": ";
         TestCase(in, out, logger).run();
+        logger << endl << "--------------------------------------------------------------" << endl;
         out << endl;
     }
 }
