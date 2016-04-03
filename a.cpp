@@ -52,10 +52,71 @@ void TestCase::run()
 {
     // MAGIC goes here
 
+    vector<int> possibles(4);
+
+    auto row1 = ri();
+    for (int i = 1; i < row1; ++i)
+    {
+        ri();
+        ri();
+        ri();
+        ri();
+    }
+
+    for (auto i = 0; i < 4; ++i)
+    {
+        possibles[i] = ri();
+    }
+
+    for (auto i = 0; i < 4-row1; ++i)
+    {
+        ri();
+        ri();
+        ri();
+        ri();
+    }
 
 
+    auto row2 = ri();
+    vector<int> answers;
+    for (int i = 1; i < row2; ++i)
+    {
+        ri();
+        ri();
+        ri();
+        ri();
+    }
 
+    for (auto i = 0; i < 4; ++i)
+    {
+        auto x = ri();
+        auto found = find(possibles.cbegin(), possibles.cend(), x);
+        if(found != possibles.cend())
+        {
+            answers.push_back(*found);
+        }
+    }
 
+    for (auto i = 0; i < 4-row2; ++i)
+    {
+        ri();
+        ri();
+        ri();
+        ri();
+    }
+
+    switch(answers.size())
+    {
+        case 0:
+            out << "Volunteer cheated!";
+            break;
+        case 1:
+            out << answers[0];
+            break;
+        default:
+            out << "Bad magician!";
+            break;
+    }
 
 
 }
