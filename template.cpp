@@ -25,8 +25,8 @@ namespace
 class TestCase
 {
 public:
-    TestCase(istream& is, ostream& os, ostream& dbg)
-        : in(is), out(os), debug(dbg)
+    TestCase(istream& is, ostream& os, ostream& logger)
+        : in(is), out(os), logger(logger)
     {
     }
     void solve();
@@ -44,7 +44,7 @@ private:
     auto rs() { return read<string>(); };
     istream& in;
     ostream& out;
-    ostream& debug;
+    ostream& logger;
 };
 
 void TestCase::solve()
@@ -60,17 +60,16 @@ void TestCase::solve()
 }
 }
 
-void run(istream& in, ostream& out, ostream& dbg)
+void run(istream& in, ostream& out, ostream& logger)
 {
-    dbg << "running..." << endl;
     int numCases;
     in >> numCases;
-    dbg << numCases << " cases" << endl;
+    logger << "running " << numCases << " cases" << endl;
     out << fixed << setprecision(7);
     for (auto i = 0; i < numCases; ++i)
     {
-        cout << "Case #" << i + 1 << ": ";
-        TestCase(in, out, dbg).solve();
-        cout << endl;
+        out << "Case #" << i + 1 << ": ";
+        TestCase(in, out, logger).solve();
+        out << endl;
     }
 }
